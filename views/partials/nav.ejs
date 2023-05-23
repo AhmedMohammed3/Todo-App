@@ -1,0 +1,17 @@
+<nav>
+    <div class="site-title">
+        <a href="/">
+            <h1>Todo List</h1>
+        </a>
+        <p>Control Your Time</p>
+    </div>
+    <div>Logged In User:
+        <% if(locals.user && locals.user.name) { %>
+            <%= user.name %>
+                <% } %>
+    </div>
+    <ul>
+        <li><a href="/">My List</a></li>
+        <li><a href="/todos">All Todo Items</a></li>
+    </ul>
+</nav>

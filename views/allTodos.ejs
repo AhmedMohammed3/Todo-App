@@ -1,0 +1,27 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+
+            <div class="todos content center">
+                <h2>
+                    All Todo List
+                </h2>
+                <ul class="todo-list">
+                    <% if(todos.length < 1) { %>
+                        <p class="no-items-lbl">No Items</p>
+                        <% } else {%>
+                            <% for(let item of todos) { %>
+                                <li class="todo-item">
+                                    <%= item.text %>
+                                </li>
+                                <% } %>
+                                    <% } %>
+                </ul>
+            </div>
+
+            <%- include("./partials/footer.ejs") %>
+    </body>
+
+</html>

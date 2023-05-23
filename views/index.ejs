@@ -1,0 +1,36 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+
+            <div class="todos content center">
+                <h2>
+                    <%= user.name %> Todo List %>
+                </h2>
+                <form action="/todo/create/" method="post" class="create-todo">
+                    <p class="caption">Add New Todo item</p>
+                    <label for="todoText">
+                        Todo Item: 
+                        <input type="text" name="text" id="todoText">
+                    </label>
+                    <button type="submit">Add Todo</button>
+                </form>
+                <p class="delete-caption">Click on any item to delete</p>
+                <ul class="todo-list">
+                    <% if(todos.length < 1) { %>
+                        <p class="no-items-lbl">No Items</p>
+                        <% } else {%>
+                            <% for(let item of todos) { %>
+                                <li onclick="deleteItem('<%= item.id %>')" class="todo-item">
+                                    <%= item.text %>
+                                </li>
+                                <% } %>
+                                    <% } %>
+                </ul>
+            </div>
+
+            <%- include("./partials/footer.ejs") %>
+    </body>
+
+</html>
