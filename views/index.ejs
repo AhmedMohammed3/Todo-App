@@ -9,27 +9,54 @@
                         <%= user.name %> Todo List %>
                     </h2>
                     <form action="/todo/create/" method="post" class="create-todo">
-                        <p class="caption">Add New Todo item</p>
-                        <label for="todoText">
+                        <% if(locals.error) {%>
+                            <h6 class="error">
+                                <%= error %>
+                            </h6>
+                            <% } %>
+                                <label for="todoText">
                         Todo Item: 
                         <input type="text" name="text" id="todoText">
                     </label>
-                        <button type="submit">Add Todo</button>
+                                <label for="dueDate">
+                        Due Date:
+                        <input type="date" name="dueDate" id="dueDate">
+                    </label>
+                                <button type="submit">Add Todo</button>
                     </form>
                     <ul class="todo-list">
                         <% if(todos.length < 1) { %>
                             <p class="no-items-lbl">No Items</p>
                             <% } else {%>
                                 <% for(let item of todos) { %>
-                                    <li class="todo-item">
-                                        <span ondblclick="editItem('<%= item.id %>')" id="todo-text-<%= item.id %>"><%= item.text %></span>
-                                        <span class="item-buttons">
+                                    <% if(item.dueDate && Math.ceil( (item.dueDate - new Date()) / (1000 * 60 * 60 * 24) ) < 0 )  { %>
+                                        <li class="todo-item past-due-date">
+                                            <% } else if(item.dueDate && Math.ceil( (item.dueDate - new Date()) / (1000 * 60 * 60 * 24) ) <= locals.rushPeriod )  { %>
+                                                <li class="todo-item rush-item">
+                                                    <% } else { %>
+                                                        <li class="todo-item">
+                                                            <% } %>
+                                                                <span ondblclick="editItem('<%= item.id %>')" class="item-left-side" id="item-left-side-<%= item.id %>">
+                                                                <span id="todo-text-<%= item.id %>"><%= item.text %></span>
+                                                                <span class="item-duedate" id="todo-duedate-<%= item.id %>">
+                                                                <% if(item.dueDate) { %>
+                                                                    <%= item.dueDate.toLocaleString("en-US", {
+                                                                        day: "numeric",
+                                                                        month: "short",
+                                                                        year: "numeric",
+                                                                    }); %>
+                                                                    <% } else { %>
+                                                                        No due date
+                                                                        <% } %>
+                                                                    </span>
+                                                                </span>
+                                                                <span class="item-buttons">
                                         <button onclick="editItem('<%= item.id %>')" id="editBtn-<%= item.id %>">Edit</button>
                                         <button onclick="deleteItem('<%= item.id %>')" id="deleteBtn-<%= item.id %>">Delete</button>
                                     </span>
-                                    </li>
-                                    <% } %>
-                                        <% } %>
+                                                        </li>
+                                                        <% } %>
+                                                            <% } %>
                     </ul>
                 </div>
                 <% } else { %>

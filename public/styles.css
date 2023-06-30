@@ -76,31 +76,51 @@ h3 {
     list-style: none;
     font-size: 1.3rem;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     margin: 20px auto;
     padding: 15px;
     width: 50%;
     text-align: left;
-    background-color: orange;
+    background-color: white;
+    border: 3px solid orange;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todos .todo-list .rush-item {
+    border: 3px solid #ffbfbf;
+}
+
+.todos .todo-list .past-due-date {
+    border: 3px solid #f00;
+}
+
+.todos .todo-list .todo-item .item-duedate {
+    font-size: 0.7rem;
+    display: block;
 }
 
 .todos .todo-list .todo-item .item-buttons {
-    position: absolute;
-    margin: auto;
-    right: 10px;
+    /* position: absolute; */
+    /* margin: auto; */
+    /* right: 10px; */
 }
 
 .todos .todo-list .todo-item .item-buttons button {
     margin: 0 2.5px;
     background-color: #333;
     color: white;
-    border: 0;
+    border: 1px solid #333;
     border-radius: 5px;
     font-size: 1.1rem;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 5px #00000080;
     padding: 5px;
     cursor: pointer;
+}
+
+.todos .todo-list .todo-item .item-buttons button:hover {
+    background-color: white;
+    color: #333;
 }
 
 .todos .todo-list .no-items-lbl {
@@ -127,17 +147,19 @@ h3 {
     margin: 0 30%;
 }
 
-.create-todo .caption {
-    font-size: 1rem;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    padding-top: 0;
+.create-todo label {
+    display: block;
+    margin: 10px;
+}
+
+.create-todo label input {
+    width: 50%;
 }
 
 .create-todo button {
-    background: rgb(255, 185, 56);
+    background: #ffb938;
     color: white;
-    border: 1px solid rgb(255, 185, 56);
+    border: 1px solid #ffb938;
     border-radius: 5px;
     font-weight: 600;
     padding: 10px;
@@ -147,13 +169,11 @@ h3 {
 
 .create-todo button:hover {
     background: white;
-    color: rgb(255, 185, 56);
+    color: #ffb938;
 }
 
 .item-owner {
-    float: right;
     font-size: 0.8rem;
-    margin: auto;
 }
 
 
@@ -166,7 +186,7 @@ h3 {
 
 .loginForm,
 .signUpForm {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 5px #00000080;
     padding: 40px;
     width: 30%;
     margin: 0 auto;

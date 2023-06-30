@@ -12,6 +12,10 @@ const todoSchema = new Schema({
         type: String,
         required: true
     },
+    dueDate: {
+        type: Date,
+        required: false
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Todo', todoSchema);

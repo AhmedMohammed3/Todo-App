@@ -1,42 +1,56 @@
+const url = require('url');
+
 const Todo = require('../models/Todo');
+const { getUserTodos } = require('../helpers/functions');
 
 exports.getIndex = async(req, res, next) => {
-    const curUser = req.user;
-    if (!curUser) {
+    const user = req.user;
+    if (!user) {
         return res.redirect('/login');
     }
-    return Todo.find({ user: curUser.id }).populate('user').sort({ createdAt: -1 })
-        .then(async todos => {
-            userTodos = todos
-                .map(item => ({
-                    id: item.id,
-                    text: item.text
-                }));
-            return res.render('index', {
-                title: 'My Todo Items',
-                todos: userTodos,
-                user: curUser
-            });
-        })
-
+    const todos = await getUserTodos(user.id, { dueDate: 1 });
+    const { error } = req.query;
+    return res.render('index', {
+        title: 'My Todo Items',
+        todos,
+        user,
+        error,
+        rushPeriod: 1
+    });
 };
 
 exports.createTodo = async(req, res, next) => {
-    const { text } = req.body;
-    const curUser = req.user;
-    if (!curUser) {
+    const { text, dueDate } = req.body;
+    const user = req.user;
+    if (!user) {
         return res.redirect('/login');
     }
-    const todo = new Todo({
-        text: text,
-        user: curUser
-    });
-    const item = await todo.save();
-    if (item) {
-        console.log("Item Saved");
-        return res.redirect(303, '/');
+    try {
+        if (!text || text.trim() == '') {
+            throw new Error("Empty Fields");
+        }
+        if (dueDate && new Date(dueDate).getTime() < new Date().getTime()) {
+            throw new Error("Due Date is behind today");
+        }
+        const todo = new Todo({
+            text,
+            user,
+            dueDate
+        });
+        const item = await todo.save();
+        if (!item) {
+            throw new Error("Item not saved");
+        }
+        return res.redirect('/');
+    } catch (err) {
+        console.log(err);
+        return res.redirect(url.format({
+            pathname: "/",
+            query: {
+                "error": err.message
+            }
+        }));
     }
-    return res.status(500).send("Not Added");
 };
 
 exports.deleteTodo = async(req, res, next) => {
@@ -57,8 +71,8 @@ exports.updateTodo = async(req, res, next) => {
         return res.status(401).json({ message: "Unauthorized!" });
     }
     const todoId = req.params.id;
-    const text = req.body.text;
-    const response = await Todo.findByIdAndUpdate(todoId, { text });
+    const { text, dueDate } = req.body;
+    const response = await Todo.findByIdAndUpdate(todoId, { text, dueDate });
 
     if (!response) {
         return res.status(500).json({ message: "Not Updated" });
