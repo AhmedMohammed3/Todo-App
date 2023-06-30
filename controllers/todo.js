@@ -74,7 +74,7 @@ exports.getAllTodos = async(req, res, next) => {
                 .map(item => ({
                     id: item.id,
                     text: item.text,
-                    owner: item.user.name
+                    owner: item.user
                 }));
             return res.render('allTodos', {
                 title: 'All Todo Items',

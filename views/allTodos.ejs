@@ -14,8 +14,16 @@
                         <% } else {%>
                             <% for(let item of todos) { %>
                                 <li class="todo-item">
-                                    <%= item.text %>
-                                        <span class="item-owner"><%= item.owner %></span>
+                                    <% if(locals.user && item.owner.name == locals.user.name) { %>
+                                        <span ondblclick="editItem('<%= item.id %>')" id="todo-text-<%= item.id %>"><%= item.text %></span>
+                                        <span class="item-buttons">
+                                                <button onclick="editItem('<%= item.id %>')" id="editBtn-<%= item.id %>">Edit</button>
+                                                <button onclick="deleteItem('<%= item.id %>')" id="deleteBtn-<%= item.id %>">Delete</button>
+                                            </span>
+                                        <% } else { %>
+                                            <%= item.text %>
+                                                <span class="item-owner"><%= item.owner.name %></span>
+                                                <% } %>
                                 </li>
                                 <% } %>
                                     <% } %>

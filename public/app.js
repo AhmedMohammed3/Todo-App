@@ -3,7 +3,7 @@ function deleteItem(itemId) {
         .then(res => res.json())
         .then(resData => {
             console.log(resData);
-            window.location.href = '/';
+            window.location.reload();
         })
         .catch(err => console.log(err));
 }
@@ -52,7 +52,7 @@ function updateItem(itemId) {
         .then(res => res.json())
         .then(resData => {
             console.log(resData);
-            window.location.href = '/';
+            window.location.reload();
         })
         .catch(err => console.log(err));
 }
