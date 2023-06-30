@@ -31,16 +31,23 @@ exports.createTodo = async(req, res, next) => {
 };
 
 exports.deleteTodo = async(req, res, next) => {
-    const todoId = req.param.id;
-    const response = await Todo.deleteOne({ id: todoId })
+    const todoId = req.params.id;
+    const response = await Todo.findByIdAndDelete(todoId);
+    if (!response) {
+        return res.status(500).json({ message: "Not Deleted" });
+    }
     console.log("Item Deleted");
     return res.json({ message: "Todo Deleted" });
 }
 
 exports.updateTodo = async(req, res, next) => {
-    const todoId = req.param.id;
-    const text = req.body.itemText;
+    const todoId = req.params.id;
+    const text = req.body.text;
     const response = await Todo.findByIdAndUpdate(todoId, { text });
+
+    if (!response) {
+        return res.status(500).json({ message: "Not Updated" });
+    }
     console.log("Item Updated");
     return res.json({ message: "Todo Updated" });
 }

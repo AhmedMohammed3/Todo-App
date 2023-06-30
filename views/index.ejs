@@ -22,8 +22,12 @@
                         <p class="no-items-lbl">No Items</p>
                         <% } else {%>
                             <% for(let item of todos) { %>
-                                <li onclick="deleteItem('<%= item.id %>')" class="todo-item">
-                                    <%= item.text %>
+                                <li class="todo-item">
+                                    <span ondblclick="editItem('<%= item.id %>')" id="todo-text-<%= item.id %>"><%= item.text %></span>
+                                    <span class="item-buttons">
+                                        <button onclick="editItem('<%= item.id %>')" id="editBtn-<%= item.id %>">Edit</button>
+                                        <button onclick="deleteItem('<%= item.id %>')" id="deleteBtn-<%= item.id %>">Delete</button>
+                                    </span>
                                 </li>
                                 <% } %>
                                     <% } %>
