@@ -13,7 +13,7 @@
 * [Contribute](#contribute)
 
 ## Description
-Todo  is a powerful and user-friendly todo application designed to help you stay organized, focused, and in control of your tasks and responsibilities. With a sleek and intuitive interface, Todo List offers a comprehensive set of features to streamline your productivity. Let's explore its key functionalities:
+Todo List is a powerful and user-friendly todo application designed to help you stay organized, focused, and in control of your tasks and responsibilities. With a sleek and intuitive interface, Todo List offers a comprehensive set of features to streamline your productivity. Let's explore its key functionalities:
 
 1. Seamless Login and Signup:
 Todo List ensures a secure and hassle-free experience by providing a seamless login and signup process. Create your personalized account or easily log in with your existing credentials to access your todos anytime, anywhere.
