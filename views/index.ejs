@@ -3,38 +3,40 @@
 
     <body>
         <%- include("./partials/nav.ejs") %>
-
-            <div class="todos content center">
-                <h2>
-                    <%= user.name %> Todo List %>
-                </h2>
-                <form action="/todo/create/" method="post" class="create-todo">
-                    <p class="caption">Add New Todo item</p>
-                    <label for="todoText">
+            <% if(locals.user) {%>
+                <div class="todos content center">
+                    <h2>
+                        <%= user.name %> Todo List %>
+                    </h2>
+                    <form action="/todo/create/" method="post" class="create-todo">
+                        <p class="caption">Add New Todo item</p>
+                        <label for="todoText">
                         Todo Item: 
                         <input type="text" name="text" id="todoText">
                     </label>
-                    <button type="submit">Add Todo</button>
-                </form>
-                <p class="delete-caption">Click on any item to delete</p>
-                <ul class="todo-list">
-                    <% if(todos.length < 1) { %>
-                        <p class="no-items-lbl">No Items</p>
-                        <% } else {%>
-                            <% for(let item of todos) { %>
-                                <li class="todo-item">
-                                    <span ondblclick="editItem('<%= item.id %>')" id="todo-text-<%= item.id %>"><%= item.text %></span>
-                                    <span class="item-buttons">
+                        <button type="submit">Add Todo</button>
+                    </form>
+                    <ul class="todo-list">
+                        <% if(todos.length < 1) { %>
+                            <p class="no-items-lbl">No Items</p>
+                            <% } else {%>
+                                <% for(let item of todos) { %>
+                                    <li class="todo-item">
+                                        <span ondblclick="editItem('<%= item.id %>')" id="todo-text-<%= item.id %>"><%= item.text %></span>
+                                        <span class="item-buttons">
                                         <button onclick="editItem('<%= item.id %>')" id="editBtn-<%= item.id %>">Edit</button>
                                         <button onclick="deleteItem('<%= item.id %>')" id="deleteBtn-<%= item.id %>">Delete</button>
                                     </span>
-                                </li>
-                                <% } %>
+                                    </li>
                                     <% } %>
-                </ul>
-            </div>
+                                        <% } %>
+                    </ul>
+                </div>
+                <% } else { %>
+                    <%- include("./partials/loginPartial.ejs") %>
+                        <% } %>
 
-            <%- include("./partials/footer.ejs") %>
+                            <%- include("./partials/footer.ejs") %>
     </body>
 
 </html>

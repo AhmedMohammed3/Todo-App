@@ -3,9 +3,10 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-const { curUser } = require('./temp/tmpData');
+const { getCurUser, parseCookies } = require('./helpers/functions');
 
 const todoRoutes = require('./routes/todo');
+const authRoutes = require('./routes/auth');
 
 const { PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME } = require('./config/config');
 
@@ -32,8 +33,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(async(req, res, next) => {
+    const cookies = parseCookies(req);
+    if (cookies && cookies.userId) {
+        const user = await getCurUser(cookies.userId);
+        req.user = user;
+    }
+    next();
+})
+
 app.use(todoRoutes);
+app.use(authRoutes);
 // 404 page
-app.use((req, res) => {
-    return res.status(404).render('404', { title: '404', user: curUser });
+app.use(async(req, res) => {
+    return res.status(404).render('404', { title: 'Not Found', user: req.user });
 });

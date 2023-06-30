@@ -15,6 +15,7 @@
                             <% for(let item of todos) { %>
                                 <li class="todo-item">
                                     <%= item.text %>
+                                        <span class="item-owner"><%= item.owner %></span>
                                 </li>
                                 <% } %>
                                     <% } %>

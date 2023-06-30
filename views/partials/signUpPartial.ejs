@@ -1,0 +1,18 @@
+<h2 class="center">Signup</h2>
+<form action="/signup" method="post" class="signUpForm">
+    <% if(locals.error) { %>
+        <h6 class="error">
+            <%= error %>
+        </h6>
+        <% } %>
+            <label for="name">Name
+                <input type="text" name="name" id="name">
+            </label>
+            <label for="email">Email
+                <input type="email" name="email" id="email">
+            </label>
+            <label for="password">Password
+                <input type="password" name="password" id="password">
+            </label>
+            <input type="submit" value="Submit">
+</form>

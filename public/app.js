@@ -3,7 +3,7 @@ function deleteItem(itemId) {
         .then(res => res.json())
         .then(resData => {
             console.log(resData);
-            window.location.reload();
+            window.location.href = '/';
         })
         .catch(err => console.log(err));
 }
@@ -55,4 +55,9 @@ function updateItem(itemId) {
             window.location.href = '/';
         })
         .catch(err => console.log(err));
+}
+
+function signOut() {
+    document.cookie = 'userId=; Max-Age=0';
+    window.location.href = '/todos';
 }
