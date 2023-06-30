@@ -13,22 +13,22 @@
 * [Contribute](#contribute)
 
 ## Description
-TaskTrackr is a powerful and user-friendly todo application designed to help you stay organized, focused, and in control of your tasks and responsibilities. With a sleek and intuitive interface, TaskTrackr offers a comprehensive set of features to streamline your productivity. Let's explore its key functionalities:
+Todo  is a powerful and user-friendly todo application designed to help you stay organized, focused, and in control of your tasks and responsibilities. With a sleek and intuitive interface, Todo List offers a comprehensive set of features to streamline your productivity. Let's explore its key functionalities:
 
 1. Seamless Login and Signup:
-TaskTrackr ensures a secure and hassle-free experience by providing a seamless login and signup process. Create your personalized account or easily log in with your existing credentials to access your todos anytime, anywhere.
+Todo List ensures a secure and hassle-free experience by providing a seamless login and signup process. Create your personalized account or easily log in with your existing credentials to access your todos anytime, anywhere.
 
 2. Add Todo:
 Effortlessly capture your tasks and to-do items with the "Add Todo" feature. Simply enter the task title and set a due date. With just a few taps, your tasks will be efficiently recorded, ready for you to tackle.
 
 3. Edit Todo:
-TaskTrackr empowers you to adapt to changing circumstances with ease. Edit your todos effortlessly to update task details, or modify due dates. Stay flexible and keep your tasks aligned with your evolving needs.
+Todo List empowers you to adapt to changing circumstances with ease. Edit your todos effortlessly to update task details, or modify due dates. Stay flexible and keep your tasks aligned with your evolving needs.
 
 4. Delete Todo:
-No longer need a task? TaskTrackr allows you to swiftly remove unwanted todos from your list. With a simple swipe or click, you can delete completed or irrelevant tasks, keeping your workspace clutter-free and focused on what matters most.
+No longer need a task? Todo List allows you to swiftly remove unwanted todos from your list. With a simple swipe or click, you can delete completed or irrelevant tasks, keeping your workspace clutter-free and focused on what matters most.
 
 5. View All Todos:
-Effortlessly stay on top of your tasks with the "View All Todos" feature. TaskTrackr provides a clear and comprehensive overview of all todos in a single place. Instantly access and review others tasks, ensuring nothing slips through the cracks.
+Effortlessly stay on top of your tasks with the "View All Todos" feature. Todo List provides a clear and comprehensive overview of all todos in a single place. Instantly access and review others tasks, ensuring nothing slips through the cracks.
 
 ## Installation
 1. Open your terminal and run the following command<br/>
