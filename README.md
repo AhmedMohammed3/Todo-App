@@ -35,9 +35,9 @@ Effortlessly stay on top of your tasks with the "View All Todos" feature. Todo L
 `git clone https://github.com/AhmedMohammed3/Todo-App.git`
 2. Install the necessary dependencies to run the web application by running<br/>
  `npm install`
-3. Create a .env file inside `Todo_App` directory like the provided [.env.example](.env.example ".env.example")
+3. Create a .env file inside `Todo-App` directory like the provided [.env.example](.env.example ".env.example")
 ## Usage
-1. Open your terminal inside the `Todo_App` Directory
+1. Open your terminal inside the `Todo-App` Directory
 2. Start the local server by running<br/>
 `npm start` or `npm run dev`
 ## Screenshots
